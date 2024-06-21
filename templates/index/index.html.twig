@@ -8,13 +8,21 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="lead">
+    <h1>Un zoo au coeur de la mythique forêt de Brocéliande</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/maxim/OneDrive/Bureau/Graduate Dev - DWWM/ecf-arcadia/src/Controller/IndexController.php</code></li>
-        <li>Your template at <code>C:/Users/maxim/OneDrive/Bureau/Graduate Dev - DWWM/ecf-arcadia/templates/index/index.html.twig</code></li>
-    </ul>
+    <p>Bienvenue à Arcadia, un havre de biodiversité niché au cœur de la mystique forêt de Brocéliande. Ce zoo enchanteur offre une expérience immersive à travers trois habitats distincts. Explorez la jungle luxuriante où crocodiles, gorilles et tigres règnent en maîtres. Partez en safari dans la savane, domaine des éléphants majestueux, des lions somnolents et des zèbres gambadants. Plongez dans les mystérieux marais peuplés de boas sinueux, de caïmans furtifs et de tortues séculaires.
+Entre vos explorations, savourez des mets délicieux au restaurant du zoo, inspirés de la cuisine locale. Pour une visite plus instructive, optez pour une excursion guidée avec nos experts passionnés, ou choisissez le petit train pour une aventure détendue à travers les habitats. Arcadia vous invite à découvrir la beauté et la diversité du règne animal, tout en encourageant le respect et la préservation de la nature pour les générations futures.</p>
+        
+        <div class="carousel col-10 col-sm-8 col-lg-6">
+            <button class="btn" id="prev">&#10096</button>
+            <button class="btn" id="next">&#10097</button>
+            <ul>
+                <li class="slide"><img src="{{asset ('images/Présentation_zoo1.jpg')}}" alt="image carousel"></li>
+                <li class="slide active"><img src="{{asset ('images/Présentation_zoo2.jpg')}}" alt="image carousel"></li>
+                <li class="slide"><img src="{{asset ('images/Présentation_zoo3.jpg')}}" alt="image carousel"></li>
+            </ul>
+        </div>
 </div>
+
 {% endblock %}

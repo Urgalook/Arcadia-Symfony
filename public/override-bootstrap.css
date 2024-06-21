@@ -1,0 +1,190 @@
+.header {
+    background-color: #0EB478;
+    justify-content: space-between;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+h1 {
+    color: #0EB478;
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+h3 {
+    color: #0EB478;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.nav-link {
+    color: white;
+}
+
+.btn {
+    color: #0EB478;
+    background-color: white;
+    border-color: #0EB478;
+}
+
+.row {
+    display: flex;
+    width: 90vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    text-align: justify;
+}
+
+.main {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: auto;
+}
+
+.avis {
+    justify-content: end !important; 
+    margin-right: 10vh;
+    text-align: center;
+}
+
+.btn-avis {
+    color: white;
+    background-color: #0EB478;
+    border-color: #0EB478;
+}
+
+.col-lg-6 {
+    padding: 2vw;
+    width: 100vw;
+}
+
+.lead {
+    text-align: justify;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+
+.col {
+    padding-right: 3rem;
+}
+
+.main-services {
+    line-height: 2rem;
+    object-fit: cover;
+}
+
+.img-habitat {
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+}
+
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 0;
+}
+
+.guepard {
+    object-fit: fill;
+}
+
+.form {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.tigre {
+    height: 100%;
+}
+
+.shadow-sm {
+    height: 100%;
+}
+
+.card-img-top {
+    height: 100%;
+}
+
+.avis-client {
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+.admin {
+    display: flex;
+    margin-left: 15vw;
+}
+
+.empl {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.title {
+    text-align: left;
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+.bvn {
+    text-align: left;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-content: center   ;
+}
+
+.services-empl {
+    display: flex
+}
+
+.form-empl {
+    margin-left: 5vw;
+    margin-right: 0vw;
+    width: 80%;
+}
+
+.btn-form-empl {
+    margin-left: 5vw;
+}
+
+.admin-empl {
+    margin-left: 5vw;
+}
+
+.table {
+    text-align: justify;
+    width: auto;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.repas {
+    text-align: justify;
+    justify-content: start;
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+.admin-cr {
+    display: flex;
+}
+
+.table-animaux {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 80vw;
+}
+
+.footer {
+    align-items: center;
+}
+
+h1.fw-light {
+    margin-bottom: 2.5vh;
+}
