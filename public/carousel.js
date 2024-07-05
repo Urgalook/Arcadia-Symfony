@@ -1,5 +1,5 @@
-const buttons = document.querySelectorAll(".btn");
-const slides = document.querySelectorAll(".slide");
+const buttons = document.querySelectorAll(".carousel-btn");
+const slides = document.querySelectorAll(".carousel-item");
 
 // Tableau d'image : [0, 1, 2]
 
