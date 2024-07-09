@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HabitatsController!{% endblock %}
+{% block title %}Nos Services{% endblock %}
 
 {% block body %}
 <style>
@@ -8,13 +8,33 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/maxim/OneDrive/Bureau/Graduate Dev - DWWM/ecf-arcadia/src/Controller/HabitatsController.php</code></li>
-        <li>Your template at <code>C:/Users/maxim/OneDrive/Bureau/Graduate Dev - DWWM/ecf-arcadia/templates/habitats/index.html.twig</code></li>
-    </ul>
-</div>
+<div class="main-services px-4 py-5">
+    <h1 class="pb-2 border-bottom">Les habitats du zoo</h1>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fs-2 text-body-emphasis">La Jungle</h3>
+          <a href="/habitats/jungle">
+            <img src="{{ asset('images/Jungle.jpg') }}" alt="Jungle" class="img-habitat">
+        </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fs-2 text-body-emphasis">La Savane</h3>
+          <a href="/habitats/savane">
+            <img src="{{ asset('images/Savane.webp') }}" alt="Savane" class="img-habitat">
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Le Marais</h3>
+          <a href="/habitats/marais">
+            <img src="{{ asset('images/Marais.jpg') }}" alt="Marais" class="img-habitat">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

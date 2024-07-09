@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Hello ServicesController!{% endblock %}
 
 {% block body %}
@@ -8,13 +9,17 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/maxim/OneDrive/Bureau/Graduate Dev - DWWM/ecf-arcadia/src/Controller/ServicesController.php</code></li>
-        <li>Your template at <code>C:/Users/maxim/OneDrive/Bureau/Graduate Dev - DWWM/ecf-arcadia/templates/services/index.html.twig</code></li>
-    </ul>
+<div class="main-services px-4 py-5">
+    <h2 class="pb-2 border-bottom">Nos services</h2>
+    <div class="row g-4 py-5 row-cols-1">
+      <div class="col d-flex align-items-start">
+        {% for service in services %}
+        <div class="col">
+          <h3 class="fs-2 text-body-emphasis">{{ service.name }}</h3>
+            <p>{{ service.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
 </div>
 {% endblock %}

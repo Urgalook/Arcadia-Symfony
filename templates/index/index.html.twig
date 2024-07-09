@@ -34,7 +34,46 @@ Entre vos explorations, savourez des mets délicieux au restaurant du zoo, inspi
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </a>
     </div>
-
 </div>
+
+<div class="container px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Les avis de nos visiteurs</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        {% for avis in avis %}
+        <div class="avis-client">
+            <div>
+                <h2>{{ avis.pseudo }}</h2>
+                <p>{{ avis.commentaire }}</p>
+            </div>
+        
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+<div class="avis d-flex gap-2 py-5">
+    <a href="/avis.php">
+        <button class="btn btn-primary btn-avis d-inline-flex align-items-center" type="button">
+            Laissez-nous un avis !
+        </button>
+    </a>
+</div>
+
+    <div class="container px-4 py-5" id="hanging-icons">
+
+        <h1>Horaires d'ouverture</h1>
+    <table class="table table-animaux">
+    <thead>
+    {% for horaire in horaire %}
+        <tr>
+        <th scope="col">{{ horaire.jour }}</th>
+        <th scope="col">{{ horaire.ouverture }}</th>
+        <th scope="col">{{ horaire.fermeture }}</th>
+        </tr>
+    {% endfor %}
+    </thead>
+    <tbody>
 
 {% endblock %}
