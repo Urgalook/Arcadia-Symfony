@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+<div class="mb-3 form-group alimentation">
+  {{ form(formAnimaux)}}  
+</div>
+
+<h1 class="display-5 fw-bold text-body-emphasis repas">Liste des animaux</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Espèce</th>
+        <th scope="col">Habitat</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for animal in animaux %}
+        <tr>
+            <th scope="row">{{ animal.id }}</th>
+            <td>{{ animal.prenom }}</td>
+            <td>{{ animal.espece }}</td>
+            <td>{{ animal.habitat }}</td>
+        </tr>
+    {% endfor %}
+        
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+        <li class="page-item">
+          <a class="page-link" href="" >
+
+          </a>
+        </li>
+
+  </ul>
+</nav>
+</div>
+
+{% endblock %}

@@ -15,6 +15,8 @@ class IndexController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function avis(Connection $connection): Response
     {   
+        $user = $this->getUser();
+        // $role = $user->getRoles();
 
         $requete = "SELECT * FROM `avis` WHERE validation = 1;";
         $stmt = $connection->prepare($requete);
@@ -30,6 +32,8 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
             'avis' => $avis,
             'horaire' => $horaires,
+            'user' => $user,
+            // 'role' => $role,
         ]);
     }
 }

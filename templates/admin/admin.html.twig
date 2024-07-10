@@ -20,14 +20,14 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/employe/avis.php" class="nav-link" aria-current="page">
+            <a href="{{ path('avis_employe') }}" class="nav-link" aria-current="page">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
             Avis
             </a>
         </li>
         {% if role == "employe" %}
         <li>
-            <a href="/employe/animaux.php" class="nav-link text-white">
+            <a href="{{ path('alimentation_employe') }}" class="nav-link text-white">
             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
             Alimentation
             </a>

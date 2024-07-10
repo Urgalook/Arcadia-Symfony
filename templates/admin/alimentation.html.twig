@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello EmployeController!{% endblock %}
+{% form_theme formAlimentation 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="mb-3 form-group alimentation">
+  {{ form(formAlimentation)}}  
+</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/maxim/OneDrive/Documents/Graduate Dev - DWWM/arcadia-symfony/Arcadia-Symfony/src/Controller/EmployeController.php</code></li>
-        <li>Your template at <code>C:/Users/maxim/OneDrive/Documents/Graduate Dev - DWWM/arcadia-symfony/Arcadia-Symfony/templates/employe/index.html.twig</code></li>
-    </ul>
+<h1 class="display-5 fw-bold text-body-emphasis repas">Repas</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">id_animal</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nourriture in nourriture %}
+        <tr>
+            <th scope="row">{{ nourriture.id }}</th>
+            <td>{{ nourriture.idAnimal }}</td>
+            <td>{{ nourriture.nourriture }}</td>
+            <td>{{ nourriture.quantite }}</td>
+            <td>{{ nourriture.date | date('d/m/Y') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+        <li class="page-item">
+          <a class="" active"" href="" >
+          </a>
+        </li>
+  </ul>
+</nav>
 </div>
 {% endblock %}
