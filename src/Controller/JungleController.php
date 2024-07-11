@@ -12,6 +12,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class JungleController extends AbstractController
 {
+    #[Route('/habitats', name: 'app_habitats')]
+    public function habitats(): Response
+    {
+        return $this->render('habitats/index.html.twig', [
+            'controller_name' => 'JungleController',
+        ]);
+    }
+
+
     #[Route('/habitats/{habitat}', name: 'app_jungle')]
     public function habitat($habitat, EntityManagerInterface $em, Connection $connection): Response
     {

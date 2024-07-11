@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+{% for flashmess in app.flashes('success') %}
+        <div class="alert alert-danger" role="alert">{{ flashmess }}</div>
+    {% endfor %}
+
+{# <div class="mb-3 form-group alimentation">
+  {{ form(formHabitat)}}  
+</div> #}
+
+<div class="mb-3 form-group alimentation">
+    <h1>Ajouter un habitat</h1>
+    <form method="post">
+        {{ form_start(formHabitat) }}
+        <div>
+            {{ form_row(formHabitat.Nom, {'label': 'Nom'}) }}
+        </div>
+        <div>
+            {{ form_row(formHabitat.Description, {'label': 'Description'}) }}
+        </div>
+        {# <button type="submit" class="btn btn-primary">Mettre à jour</button> #}
+        {{ form_end(formHabitat) }}
+    </form>
+</div>
+
+<h1>Liste des habitats</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for habitat in habitats %}
+        <tr>
+            <th scope="row">{{ habitat.id }}</th>
+            <td>{{ habitat.nom }}</td>
+            <td>{{ habitat.description }}</td>
+            <td class="valider-btn"><a href="{{ path('app_editHabitat', {'id': habitat.id}) }}">Modifier</a>
+            <a href="{{ path('app_deleteHabitat', {'id': habitat.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+        <li class="page-item">
+          <a class="" active"" href="" >
+
+          </a>
+        </li>
+
+  </ul>
+</nav>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
+</script>
+
+{% endblock %}

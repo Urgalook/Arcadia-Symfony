@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for flashmess in app.flashes('success') %}
+        <div class="alert alert-danger" role="alert">{{ flashmess }}</div>
+    {% endfor %}
+
+<div class="mb-3 form-group alimentation">
+    <h1>Modifier un habitat</h1>
+    <form method="post">
+        {{ form_start(formHabitat) }}
+        <div>
+            {{ form_row(formHabitat.Nom, {'label': 'Nom'}) }}
+        </div>
+        <div>
+            {{ form_row(formHabitat.Description, {'label': 'Description'}) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        {# {{ form_end(formHabitat) }} #}
+    </form>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
+</script>
+
+{% endblock %}

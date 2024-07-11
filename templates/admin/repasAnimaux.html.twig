@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+<h1 class="display-5 fw-bold text-body-emphasis repas">Repas</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Animal</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nourriture in nourriture %}
+        <tr>
+            <th scope="row">{{ nourriture.id }}</th>
+            <td>{{ nourriture.prenom }}</td>
+            <td>{{ nourriture.nourriture }}</td>
+            <td>{{ nourriture.quantite }}</td>
+            <td>{{ nourriture.date | date('d/m/Y') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+        <li class="page-item">
+          <a class="" active"" href="" >
+          </a>
+        </li>
+  </ul>
+</nav>
+</div>
+{% endblock %}

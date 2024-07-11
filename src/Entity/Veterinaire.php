@@ -14,9 +14,6 @@ class Veterinaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $IdAnimal = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $etat = null;
 
@@ -32,21 +29,12 @@ class Veterinaire
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $remarque = null;
 
+    #[ORM\ManyToOne(inversedBy: 'veterinaires')]
+    private ?Animaux $Animal = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdAnimal(): ?int
-    {
-        return $this->IdAnimal;
-    }
-
-    public function setIdAnimal(int $IdAnimal): static
-    {
-        $this->IdAnimal = $IdAnimal;
-
-        return $this;
     }
 
     public function getEtat(): ?string
@@ -105,6 +93,18 @@ class Veterinaire
     public function setRemarque(?string $remarque): static
     {
         $this->remarque = $remarque;
+
+        return $this;
+    }
+
+    public function getAnimal(): ?Animaux
+    {
+        return $this->Animal;
+    }
+
+    public function setAnimal(?Animaux $Animal): static
+    {
+        $this->Animal = $Animal;
 
         return $this;
     }

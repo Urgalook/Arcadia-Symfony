@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NourritureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,8 +16,6 @@ class Nourriture
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $IdAnimal = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nourriture = null;
@@ -26,22 +26,20 @@ class Nourriture
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+    #[ORM\ManyToOne(inversedBy: 'nourritures')]
+    private ?Animaux $animal = null;
+
+
+    public function __construct()
+    {
+        
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdAnimal(): ?int
-    {
-        return $this->IdAnimal;
-    }
-
-    public function setIdAnimal(int $IdAnimal): static
-    {
-        $this->IdAnimal = $IdAnimal;
-
-        return $this;
-    }
 
     public function getNourriture(): ?string
     {
@@ -75,6 +73,18 @@ class Nourriture
     public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getAnimal(): ?Animaux
+    {
+        return $this->animal;
+    }
+
+    public function setAnimal(?Animaux $animal): static
+    {
+        $this->animal = $animal;
 
         return $this;
     }

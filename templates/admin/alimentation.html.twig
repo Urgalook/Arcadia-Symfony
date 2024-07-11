@@ -14,7 +14,7 @@
     <thead>
         <tr>
         <th scope="col">id</th>
-        <th scope="col">id_animal</th>
+        <th scope="col">Animal</th>
         <th scope="col">Nourriture</th>
         <th scope="col">Quantité</th>
         <th scope="col">Date</th>
@@ -24,7 +24,7 @@
         {% for nourriture in nourriture %}
         <tr>
             <th scope="row">{{ nourriture.id }}</th>
-            <td>{{ nourriture.idAnimal }}</td>
+            <td>{{ nourriture.prenom }}</td>
             <td>{{ nourriture.nourriture }}</td>
             <td>{{ nourriture.quantite }}</td>
             <td>{{ nourriture.date | date('d/m/Y') }}</td>

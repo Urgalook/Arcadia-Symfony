@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+{% for flashmess in app.flashes('success') %}
+        <div class="alert alert-danger" role="alert">{{ flashmess }}</div>
+    {% endfor %}
+
+<div class="mb-3 form-group alimentation">
+    <h1>Ajouter un compte-rendu</h1>
+    <form method="post">
+        {{ form_start(formVeterinaire) }}
+        <div>
+            {{ form_row(formVeterinaire.Animal, {'label': 'Animal'}) }}
+        </div>
+                <div>
+            {{ form_row(formVeterinaire.etat, {'label': 'Etat'}) }}
+        </div>
+                <div>
+            {{ form_row(formVeterinaire.nourriture, {'label': 'Nourriture'}) }}
+        </div>
+                <div>
+            {{ form_row(formVeterinaire.grammage, {'label': 'gramme'}) }}
+        </div>
+                <div>
+            {{ form_row(formVeterinaire.date, {'label': 'Date'}) }}
+        </div>
+                <div>
+            {{ form_row(formVeterinaire.remarque, {'label': 'Remarque'}) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        {{ form_end(formVeterinaire) }}
+    </form>
+</div>
+
+
+
+<h1 class="display-5 fw-bold text-body-emphasis repas">Compte-rendus</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">animal</th>
+        <th scope="col">Etat animal</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col">Grammage nourriture</th>
+        <th scope="col">Date</th>
+        <th scope="col">Remarque</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for veterinaire in veterinaires %}
+        <tr>
+            <th scope="row">{{ veterinaire.id }}</th>
+            <td>{{ veterinaire.prenom }}</td>
+            <td>{{ veterinaire.etat }}</td>
+            <td>{{ veterinaire.nourriture }}</td>
+            <td>{{ veterinaire.grammage }}</td>
+            <td>{{ veterinaire.date | date() }}</td>
+            <td>{{ veterinaire.remarque }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+        <li class="page-item">
+          <a class="" href="" >
+
+          </a>
+        </li>
+  </ul>
+</nav>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
+</script>
+
+{% endblock %}

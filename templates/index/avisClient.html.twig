@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+{% form_theme formAvis 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+{% for flashmess in app.flashes('success') %}
+        <div class="alert alert-danger" role="alert">{{ flashmess }}</div>
+    {% endfor %}
+
+<div class="mb-3 form-group alimentation">
+  {{ form(formAvis)}}  
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
+</script>
+
+{% endblock %}
