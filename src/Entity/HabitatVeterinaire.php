@@ -15,7 +15,7 @@ class HabitatVeterinaire
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $Habitat = null;
+    private ?string $Habitat = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $Commentaire = null;
@@ -28,12 +28,12 @@ class HabitatVeterinaire
         return $this->id;
     }
 
-    public function getHabitat(): ?int
+    public function getHabitat(): ?string
     {
         return $this->Habitat;
     }
 
-    public function setHabitat(int $Habitat): static
+    public function setHabitat(string $Habitat): static
     {
         $this->Habitat = $Habitat;
 

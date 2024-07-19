@@ -4,8 +4,15 @@
 
 {% block body %}
 
-<h1 class="display-5 fw-bold text-body-emphasis repas">Compte-rendus</h1>
-    <table class="table">
+<h1 class="display-5 fw-bold text-body-emphasis repas">Comptes-rendus</h1>
+
+<div class="container">
+  <h2>Rechercher</h2>
+  <input class="form-control" id="myInput" type="text" placeholder="Recherche..">
+  <br>
+</div>
+
+    <table class="table" id="myTable">
     <thead>
         <tr>
         <th scope="col">#</th>
@@ -18,14 +25,14 @@
         </tr>
     </thead>
     <tbody>
-    {% for veterinaire in veterinaires %}
+    {% for veterinaire in veterinaires | reverse %}
         <tr>
             <th scope="row">{{ veterinaire.id }}</th>
             <td>{{ veterinaire.prenom }}</td>
             <td>{{ veterinaire.etat }}</td>
             <td>{{ veterinaire.nourriture }}</td>
             <td>{{ veterinaire.grammage }}</td>
-            <td>{{ veterinaire.date | date() }}</td>
+            <td>{{ veterinaire.date | date('d/m/Y') }}</td>
             <td>{{ veterinaire.remarque }}</td>
         </tr>
     {% endfor %}
@@ -43,4 +50,17 @@
 </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
 {% endblock %}

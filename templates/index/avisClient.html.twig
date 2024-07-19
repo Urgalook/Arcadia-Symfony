@@ -6,7 +6,7 @@
 {% block body %}
 
 {% for flashmess in app.flashes('success') %}
-        <div class="alert alert-danger" role="alert">{{ flashmess }}</div>
+        <div class="alert alert-success lead" role="alert">{{ flashmess }}</div>
     {% endfor %}
 
 <div class="mb-3 form-group alimentation">
@@ -23,3 +23,7 @@
 </script>
 
 {% endblock %}
+
+
+
+

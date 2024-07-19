@@ -18,7 +18,7 @@
   </section>
 
 
-<div class="album py-5 bg-body-tertiary">
+<div class="lead album py-5 bg-body-tertiary">
 	<div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
     {% for animaux in allAnimaux %}
 		<div class="col">
@@ -26,15 +26,16 @@
 				<img src="{{ asset('images/' ~ habitatName ~ '/' ~ animaux.espece) }}.jpg" class="card-img-top" alt="Les {{ animaux.espece }} d'Arcadia">
 				<div class="card-body"> 
 					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-outline-secondary btn-detail" id="togg1">Découvrez nos {{ animaux.espece }}s en détail</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary btn-detail" id="togg{{ loop.index }}">Découvrez nos {{ animaux.espece }}s en détail</button>
 					</div>
-					<div class="card-text" id="d1">
+					<div class="card-text" id="d{{ loop.index }}" style="display:none">
 						<p>
 							Prénoms :
                             {% for prenom in animaux.prenoms %}
                                 {{ prenom }},
                             {% endfor %}
 						</p>
+            <p>Le commentaire du vétérinaire :</p>
 					</div>
 				</div>
 			</div>
@@ -43,8 +44,24 @@
 	</div>
 </div>
 
+{% endblock %}
 
+{% block javascripts %}
+	<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const buttons = document.querySelectorAll('.btn-detail');
 
-          
-
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const buttonId = event.target.id.replace('togg', '');
+                const detailDiv = document.getElementById(`d${buttonId}`);
+                if (detailDiv.style.display === 'none') {
+                    detailDiv.style.display = 'block';
+                } else {
+                    detailDiv.style.display = 'none';
+                }
+            });
+        });
+    });
+	</script>
 {% endblock %}

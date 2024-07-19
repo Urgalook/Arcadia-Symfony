@@ -1,8 +1,6 @@
 const buttons = document.querySelectorAll(".carousel-btn");
 const slides = document.querySelectorAll(".carousel-item");
 
-// Tableau d'image : [0, 1, 2]
-
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const calcNextSlide = e.target.id === "next" ? 1 : -1;
@@ -17,3 +15,6 @@ buttons.forEach((button) => {
     slideActive.classList.remove("active");
   });
 });
+
+
+

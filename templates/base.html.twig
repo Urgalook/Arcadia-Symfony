@@ -17,7 +17,7 @@
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                 <div class="col-md-3 mb-2 mb-md-0">
                     <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                    <img src="{{ asset('images/Arcadia.png') }}" alt="Logo Arcadia" width="150px">
+                    <img src="{{ asset('images/Arcadia.png') }}" alt="Logo Arcadia" width="80%">
                     </a>
                 </div> 
                     <ul class="head nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -26,41 +26,73 @@
                         <li><a href="../contact.php" class="nav-link px-2">Contact</a></li>
                     </ul>
 {% if app.user %}
-    {# <li class="nav-item dropdown"> #}
-        {# <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="appDropdown">MENU DEROULANT QUI MARCHE PAS</a> #}
         <div class="dropdown">
         <a class="btn btn-secondary btn-menu dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Menu
   </a>
+            
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="DropdownMenuLink">
+            {% set Roles = app.user.roles %}
+            {% if 'admin' in Roles %}
+                <a href="{{ path('app_pageAnimaux') }}" class="dropdown-item">Animaux</a>
+                <a href="{{ path('app_pageHoraires') }}" class="dropdown-item">Horaires</a>
+                <a href="{{ path('app_pageHabitats') }}" class="dropdown-item">Habitats</a>
+                <a href="{{ path('app_pageServices') }}"class="dropdown-item">Services</a>
+                <a href="{{ path('app_pageCompteRendu') }}" class="dropdown-item">Compte-rendus vétérinaires</a>
+                <a href="{{ path('app_register') }}" class="dropdown-item">Création utilisateur</a>
+            {% endif %}
+
+            {% if 'employe' in Roles %}   
                 <a href="{{ path('app_pageAvis') }}" class="dropdown-item">Avis</a>
                 <a href="{{ path('app_pageAlimentation') }}" class="dropdown-item">Alimentation</a>
                 <a href="{{ path('app_pageServices') }}"class="dropdown-item">Services</a>
-                <a href="{{ path('app_pageHoraires') }}" class="dropdown-item">Horaires</a>
-                <a href="{{ path('app_pageHabitats') }}" class="dropdown-item">Habitats</a>
-                <a href="{{ path('app_pageAnimaux') }}" class="dropdown-item">Animaux</a>
-                <a href="{{ path('app_pageVeterinaire') }}" class="dropdown-item">Compte-rendus vétérinaires</a>
-                <a href="{{ path('app_pageCompteRendu') }}" class="dropdown-item">Compte-rendus</a>
+            {% endif %}
+
+            {% if 'veterinaire' in Roles %}
+                <a href="{{ path('app_pageVeterinaire') }}" class="dropdown-item">Compte-rendus</a>
                 <a href="{{ path('app_pageRepas') }}" class="dropdown-item">Repas</a>
-                <a href="{{ path('app_logout') }}" class="dropdown-item">Déconnexion</a>                 
+                <a href="{{ path('app_pageHabitatVeterinaire') }}" class="dropdown-item">Habitats</a>
+            {% endif %}   
+            <a href="{{ path('app_logout') }}" class="dropdown-item">Déconnexion</a>              
             </div>
         </div>
-    {# </li> #}
                 {% else %}
                     <a class="btn btn-secondary nav-link" href="{{ path('app_login') }}">Connexion</a>
-                
+   
 {% endif %}
-                {# <div class="col-md-3 text-end">
-                    <a href="/login"><button type="button" class="btn btn-outline-primary me-2">Connexion</button></a>
-                </div> #}
+
             </header>
         </div>
     </nav>
+
+    </body>
         {% block body %}{% endblock %}
+
             <script src="{{ asset('carousel.js')}}"></script>  
             <script src="{{ asset('menu.js')}}"></script>  
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
+        
+        {% block javascripts %}
+            <script>
+                const btnMenu = document.querySelector('.btn-menu');
+                const dropdown = document.querySelector('.dropdown');
+                const dropdownMenu = document.querySelector('.dropdown-menu');
+                const aria = document.querySelector('.aria-expanded');
+
+                btnMenu.addEventListener('click', () => {
+                dropdown.classList.toggle('show');
+                dropdownMenu.classList.toggle('show');
+                aria.classList.toggle('true');
+                });
+            </script>
+        {% endblock %}
+
+    <div class="lead">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="padding-left:40vw; padding-right:40vw">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <img src="{{ asset('images/Arcadia2.png') }}" alt="Logo Arcadia" width="150px">
+            </a>
+        </footer>
+    </div>
 </html>

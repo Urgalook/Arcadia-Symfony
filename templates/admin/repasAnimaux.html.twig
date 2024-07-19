@@ -5,7 +5,15 @@
 {% block body %}
 
 <h1 class="display-5 fw-bold text-body-emphasis repas">Repas</h1>
-    <table class="table">
+
+<div class="container">
+  <h2>Rechercher</h2>
+  <p>Rechercher un animal, un aliment ou une date :</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+</div>
+
+    <table class="table filter">
     <thead>
         <tr>
         <th scope="col">id</th>
@@ -15,7 +23,7 @@
         <th scope="col">Date</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="myTable">
         {% for nourriture in nourriture %}
         <tr>
             <th scope="row">{{ nourriture.id }}</th>
@@ -37,4 +45,19 @@
   </ul>
 </nav>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+
 {% endblock %}

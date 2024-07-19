@@ -7,6 +7,7 @@ use App\Entity\Avis;
 use App\Entity\Roles;
 use App\Entity\Animaux;
 use App\Entity\Habitat;
+use App\Entity\HabitatVeterinaire;
 use App\Entity\Horaire;
 use App\Entity\Services;
 use App\Form\AnimauxType;
@@ -17,6 +18,7 @@ use App\Form\ServicesType;
 use App\Form\EditServiceType;
 use Doctrine\DBAL\Connection;
 use App\Form\AlimentationAnimauxType;
+use App\Form\HabitatVeterinaireType;
 use App\Form\VeterinaireType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -330,6 +332,31 @@ class AdminController extends AbstractController
         return $this->render('admin/repasAnimaux.html.twig', [
             'controller_name' => 'AdminController',
             'nourriture' => $nourriture,
+        ]);
+    }
+
+    #[Route('/adminHabitatVeterinaire', name: 'app_pageHabitatVeterinaire')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    public function pageHabitatVeterinaire(EntityManagerInterface $em, Request $request): Response
+    {
+        $commentaires = $em->getRepository(HabitatVeterinaire::class)->findAll();
+
+        $commentaire = new HabitatVeterinaire();
+        $formHabitatVet = $this->createForm(HabitatVeterinaireType::class, $commentaire);
+        $formHabitatVet->handleRequest($request);
+
+        if ($formHabitatVet->isSubmitted() && $formHabitatVet->isValid()) {
+            $em->persist($commentaire);
+            $em->flush();
+
+            return $this->redirectToRoute('app_pageHabitatVeterinaire');
+        }
+
+        return $this->render('admin/habitatVeterinaire.html.twig', [
+            'controller_name' => 'AdminController',
+            'commentaire' => $commentaire,
+            'commentaires' => $commentaires,
+            'formHabitatVet' => $formHabitatVet->createView(),
         ]);
     }
 }

@@ -13,7 +13,6 @@
     <table class="table">
     <thead>
         <tr>
-        <th scope="col">id</th>
         <th scope="col">Prénom</th>
         <th scope="col">Espèce</th>
         <th scope="col">Habitat</th>
@@ -22,26 +21,69 @@
     <tbody>
     {% for animal in animaux %}
         <tr>
-            <th scope="row">{{ animal.id }}</th>
-            <td>{{ animal.prenom }}</td>
+            <th scope="row">{{ animal.prenom }}</th>
             <td>{{ animal.espece }}</td>
             <td>{{ animal.habitat }}</td>
         </tr>
     {% endfor %}
-        
     </tbody>
     </table>
-    <nav aria-label="Page navigation example">
-  <ul class="pagination">
 
-        <li class="page-item">
-          <a class="page-link" href="" >
 
-          </a>
-        </li>
+{% endblock %}
 
-  </ul>
-</nav>
-</div>
+{% block javascripts %}
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const content = document.querySelector('.table'); 
+    const itemsPerPage = 10;
+    let currentPage = 0;
+    const items = Array.from(content.getElementsByTagName('tr')).slice(1);
 
+  function showPage(page) {
+    const startIndex = page * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    items.forEach((item, index) => {
+      item.classList.toggle('hidden', index < startIndex || index >= endIndex);
+    });
+    updateActiveButtonStates();
+  }
+
+  function createPageButtons() {
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+    const paginationContainer = document.createElement('div');
+    const paginationDiv = document.body.appendChild(paginationContainer);
+    paginationContainer.classList.add('pagination');
+
+    // Add page buttons
+    for (let i = 0; i < totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i + 1;
+      pageButton.addEventListener('click', () => {
+        currentPage = i;
+        showPage(currentPage);
+        updateActiveButtonStates();
+      });
+
+        content.appendChild(paginationContainer);
+        paginationDiv.appendChild(pageButton);
+      }
+  }
+
+  function updateActiveButtonStates() {
+    const pageButtons = document.querySelectorAll('.pagination button');
+    pageButtons.forEach((button, index) => {
+      if (index === currentPage) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
+    });
+  }
+
+    createPageButtons(); // Call this function to create the page buttons initially
+  showPage(currentPage);
+});
+
+  </script>
 {% endblock %}
