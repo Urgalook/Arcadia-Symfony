@@ -29,7 +29,6 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
@@ -49,7 +48,6 @@ class RegistrationFormType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmez le mot de passe'],
             ])
-
             ->add('roles', EntityType::class, [
                 'class' => Roles::class,
                 'choice_label' => 'role',
