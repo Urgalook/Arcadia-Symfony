@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello ServicesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="main-services px-4 py-5">
+    <h2 class="pb-2 border-bottom">Nos services</h2>
+    <div class="row g-4 py-5 row-cols-1">
+      <div class="col d-flex align-items-start">
+        {% for service in services %}
+        <div class="col">
+          <h3 class="fs-2 text-body-emphasis">{{ service.name }}</h3>
+            <p>{{ service.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+{% endblock %}

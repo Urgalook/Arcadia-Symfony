@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="lead">
+    <h1>Un zoo au coeur de la mythique forêt de Brocéliande</h1>
+
+    <p>Bienvenue à Arcadia, un havre de biodiversité niché au cœur de la mystique forêt de Brocéliande. Ce zoo enchanteur offre une expérience immersive à travers trois habitats distincts. Explorez la jungle luxuriante où crocodiles, gorilles et tigres règnent en maîtres. Partez en safari dans la savane, domaine des éléphants majestueux, des lions somnolents et des zèbres gambadants. Plongez dans les mystérieux marais peuplés de boas sinueux, de caïmans furtifs et de tortues séculaires.
+Entre vos explorations, savourez des mets délicieux au restaurant du zoo, inspirés de la cuisine locale. Pour une visite plus instructive, optez pour une excursion guidée avec nos experts passionnés, ou choisissez le petit train pour une aventure détendue à travers les habitats. Arcadia vous invite à découvrir la beauté et la diversité du règne animal, tout en encourageant le respect et la préservation de la nature pour les générations futures.</p>
+
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="carousel-img d-block img-fluid" src="{{ asset('images/Présentation_zoo5.WebP') }}" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="carousel-img d-block img-fluid" src="{{ asset('images/Présentation_zoo4.jpg') }}" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="carousel-img d-block img-fluid" src="{{ asset('images/Présentation_zoo6.jpg') }}" alt="Third slide">
+            </div>
+        </div>
+            <a class="carousel-btn carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-btn carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-btn carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+    </div>
+</div>
+
+<div class="lead px-4 py-5">
+    <h2 class="pb-2 border-bottom">Les avis de nos visiteurs</h2>
+
+    <div class="lead-avis row-index py-5 row-cols-1">
+      <div class="row d-flex align-items-start">
+        <div class="avis-client">
+            {% for avis in avis %}
+            <div class="grid">
+                <h2>{{ avis.pseudo }}</h2>
+                <p>{{ avis.commentaire }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="avis d-flex gap-2 py-5">
+    <a href="{{ path('app_avis') }}">
+        <button class="btn btn-primary btn-avis d-inline-flex align-items-center" type="button">
+            Laissez-nous un avis !
+        </button>
+    </a>
+</div>
+
+    <div class="lead px-4 py-5" id="hanging-icons">
+
+            <h1>Horaires d'ouverture</h1>
+        <table class="table table-animaux">
+        <thead>
+        {% for horaire in horaire %}
+            <tr>
+            <th scope="col">{{ horaire.jour }}</th>
+            <th scope="col">{{ horaire.ouverture }}</th>
+            <th scope="col">{{ horaire.fermeture }}</th>
+            </tr>
+        {% endfor %}
+        </thead>
+    </table>
+    </div>    
+
+
+{% endblock %}

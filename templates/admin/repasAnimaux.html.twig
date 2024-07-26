@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+<h1 class="display-5 fw-bold text-body-emphasis repas">Repas</h1>
+
+<div class="container">
+  <h2>Rechercher</h2>
+  <p>Rechercher un animal, un aliment ou une date :</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+</div>
+
+    <table class="table filter">
+    <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Animal</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        {% for nourriture in nourriture %}
+        <tr>
+            <th scope="row">{{ nourriture.id }}</th>
+            <td>{{ nourriture.prenom }}</td>
+            <td>{{ nourriture.nourriture }}</td>
+            <td>{{ nourriture.quantite }}</td>
+            <td>{{ nourriture.date | date('d/m/Y') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+        <li class="page-item">
+          <a class="" active"" href="" >
+          </a>
+        </li>
+  </ul>
+</nav>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+
+{% endblock %}

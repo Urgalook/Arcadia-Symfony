@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestInsertController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <a class="btn btn-primary" onclick="insert()">test</a>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>C:/Users/maxim/OneDrive/Documents/Graduate Dev - DWWM/arcadia-symfony/Arcadia-Symfony/src/Controller/TestInsertController.php</code></li>
+        <li>Your template at <code>C:/Users/maxim/OneDrive/Documents/Graduate Dev - DWWM/arcadia-symfony/Arcadia-Symfony/templates/test_insert/index.html.twig</code></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    function insert() {
+        var url = "/test/insertbis";
+
+
+
+        $.ajax({
+            type: "post",
+            data: {},
+            url: url,
+            beforeSend: function(){
+            // $('#fullsizegrey').show();
+            },
+            complete: function(){
+            //    $('#fullsizegrey').hide();
+            },
+            success: function(response){
+                console.log(response);
+
+            },
+            error: function(data){
+                console.log(data)
+            }
+        });
+    }
+</script>
+{% endblock %}

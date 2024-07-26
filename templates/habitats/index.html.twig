@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Services{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="main-services px-4 py-5">
+    <h1 class="pb-2 border-bottom">Les habitats du zoo</h1>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fs-2 text-body-emphasis">La Jungle</h3>
+          <a href="/habitats/jungle">
+            <img src="{{ asset('images/Jungle.jpg') }}" alt="Jungle" class="img-habitat">
+        </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fs-2 text-body-emphasis">La Savane</h3>
+          <a href="/habitats/savane">
+            <img src="{{ asset('images/Savane.webp') }}" alt="Savane" class="img-habitat">
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Le Marais</h3>
+          <a href="/habitats/marais">
+            <img src="{{ asset('images/Marais.jpg') }}" alt="Marais" class="img-habitat">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+<div class="table">
+    <h1>Liste des horaires</h1>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Jour</th>
+            <th scope="col">Ouverture</th>
+            <th scope="col">Fermeture</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for horaire in horaires %}
+            <tr>
+                <th scope="row">{{ horaire.id }}</th>
+                <td>{{ horaire.jour }}</td>
+                {# <td>{{ horaire.ouverture }}</td> #}
+                {# <td>{{ horaire.fermeture }}</td> #}
+                <td class="valider-btn"><a href="">Modifier</a>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+        </table>
+        <nav aria-label="Page navigation example">
+    <ul class="pagination">
+
+            <li class="page-item">
+            <a class="" href="" >
+
+            </a>
+            </li>
+
+    </ul>
+    </nav>
+</div>
+    
+{% endblock %}
+

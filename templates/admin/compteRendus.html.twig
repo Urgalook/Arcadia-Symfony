@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+{% block body %}
+
+<h1 class="display-5 fw-bold text-body-emphasis repas">Comptes-rendus</h1>
+
+<div class="container">
+  <h2>Rechercher</h2>
+  <input class="form-control" id="myInput" type="text" placeholder="Recherche..">
+  <br>
+</div>
+
+    <table class="table" id="myTable">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">animal</th>
+        <th scope="col">Etat animal</th>
+        <th scope="col">Nourriture</th>
+        <th scope="col">Grammage nourriture</th>
+        <th scope="col">Date</th>
+        <th scope="col">Remarque</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for veterinaire in veterinaires | reverse %}
+        <tr>
+            <th scope="row">{{ veterinaire.id }}</th>
+            <td>{{ veterinaire.prenom }}</td>
+            <td>{{ veterinaire.etat }}</td>
+            <td>{{ veterinaire.nourriture }}</td>
+            <td>{{ veterinaire.grammage }}</td>
+            <td>{{ veterinaire.date | date('d/m/Y') }}</td>
+            <td>{{ veterinaire.remarque }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+        <li class="page-item">
+          <a class="" href="" >
+
+          </a>
+        </li>
+  </ul>
+</nav>
+</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+{% endblock %}

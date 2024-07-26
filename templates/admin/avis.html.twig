@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello EmployeController!{% endblock %}
+
+
+{% block body %}
+
+{% for flashmess in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ flashmess }}</div>
+    {% endfor %}
+
+<div class="lead avis">
+    <h1 class="display-5 fw-bold text-body-emphasis">Avis</h1>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Pseudo</th>
+        <th scope="col">Avis</th>
+        <th scope="col">Actions</th>
+        <th scope="col">Validation</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for avis in avis | reverse %}
+        <tr>
+            <th scope="row">{{ avis.id }}</th>
+            <td>{{ avis.pseudo }}</td>
+            <td>{{ avis.commentaire }}</td>
+            <td class="valider-btn"><a href="{{ path('app_validateAvis', {'id': avis.id}) }}">Valider</a>
+            <a href="{{ path('app_deleteAvis', {'id': avis.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet avis ?')">Supprimer</a></td>
+            <td>{{ avis.validation }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+        <li class="page-item">
+          <a class="" href="" >
+          </a>
+        </li>
+  </ul>
+</nav>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    $(document).ready(function(){
+      $(".alert").delay(5000).slideUp(300);
+  });
+  </script>
+
+{% endblock %}
