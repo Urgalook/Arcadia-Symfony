@@ -12,18 +12,19 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Role\Role;
 
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    // #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
-        $userConnected = $this->getUser();
-        $roleUser = $userConnected->getRoles();
-        if (!in_array('admin', $roleUser)) {
-            return $this->redirectToRoute('app_index');
-        }
+        // $userConnected = $this->getUser();
+        // $roleUser = $userConnected->getRoles();
+        // if (!in_array('admin', $roleUser)) {
+        //     return $this->redirectToRoute('app_index');
+        // }
 
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -38,7 +39,9 @@ class RegistrationController extends AbstractController
             );
 
             $role = $form->get('roles')->getData();
+            
             $user->setRoles($role);
+            
 
             $entityManager->persist($user);
             $entityManager->flush();
